@@ -42,3 +42,5 @@ print_green "[system] Setting db_name: ${db_name}, username: ${db_user} and pass
 sed -i "s/database_name_here/${db_name}/g" wp-config.php
 sed -i "s/username_here/${db_user}/g" wp-config.php
 sed -i "s/password_here/${db_password}/g" wp-config.php
+
+cd -
