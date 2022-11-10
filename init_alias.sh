@@ -1,4 +1,7 @@
 #!/bin/bash
+grep 'eip="curl' ~/.bashrc
+if [[ $? -eq 1 ]]; then
+cat <<ALIASLIST >~/.bashrc
 alias cls="clear"
 alias ls='ls -liah --color=auto'
 alias grep='grep --color=auto'
@@ -13,3 +16,5 @@ alias df='df -H'
 alias du='du -ch'
 alias diff="diff --color=auto --suppress-common-lines -y"
 alias eip="curl ipinfo.io/ip"
+ALIASLIST
+fi
