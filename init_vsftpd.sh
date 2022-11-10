@@ -7,6 +7,7 @@ dnf install -y vsftpd openssl
 systemctl enable --now vsftpd
 
 firewall-cmd --zone=public --permanent --add-port=21/tcp
+firewall-cmd --zone=public --permanent --add-port=22/tcp
 firewall-cmd --zone=public --permanent --add-port=30000-31000/tcp
 firewall-cmd --zone=public --permanent --add-service=ftp
 
@@ -22,6 +23,7 @@ chown vsftpduser: /home/vsftpduser/ftp_folder
 
 
 echo 'vsftpduser' >> /etc/vsftpd/user_list
+echo 'tobi801j' >> /etc/vsftpd/user_list
 
 sed -i 's/#chroot_local_user=YES/chroot_local_user=YES/g' /etc/vsftpd/vsftpd.conf
 
@@ -31,10 +33,9 @@ echo "pasv_max_port=31000" >> /etc/vsftpd/vsftpd.conf
 echo "userlist_file=/etc/vsftpd/user_list" >> /etc/vsftpd/vsftpd.conf
 echo "userlist_deny=NO" >> /etc/vsftpd/vsftpd.conf
 
-#sudo openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/vsftpd.pem -out /etc/vsftpd/vsftpd.pem
+echo "ssl_enable=YES" >> /etc/vsftpd/vsftpd.conf
+sudo openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/vsftpd.pem -out /etc/vsftpd/vsftpd.pem
+echo "rsa_cert_file=/etc/vsftpd/vsftpd.pem" >> /etc/vsftpd/vsftpd.conf
+echo "rsa_private_key_file=/etc/vsftpd.pem" >> /etc/vsftpd/vsftpd.conf
 
-#echo "rsa_cert_file=/etc/vsftpd/vsftpd.pem" >> /etc/vsftpd/vsftpd.conf
-#echo "rsa_private_key_file=/etc/vsftpd.pem" >> /etc/vsftpd/vsftpd.conf
-#echo "ssl_enable=YES" >> /etc/vsftpd/vsftpd.conf # THIS FAILS!
-
-systemctl restart vsftpd
+systemctl restart vsftpd || systemctl reload vsftpd
