@@ -35,6 +35,6 @@ echo "userlist_deny=NO" >> /etc/vsftpd/vsftpd.conf
 
 #echo "rsa_cert_file=/etc/vsftpd/vsftpd.pem" >> /etc/vsftpd/vsftpd.conf
 #echo "rsa_private_key_file=/etc/vsftpd.pem" >> /etc/vsftpd/vsftpd.conf
-#echo "ssl_enable=YES" >> /etc/vsftpd/vsftpd.conf
+#echo "ssl_enable=YES" >> /etc/vsftpd/vsftpd.conf # THIS FAILS!
 
 systemctl restart vsftpd
