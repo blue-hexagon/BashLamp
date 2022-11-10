@@ -1,6 +1,5 @@
 #!/bin/bash    
 source func_colors.sh
-source func_require_root.sh
 
 dnf update -y
 print_green "[dnf] System updated"

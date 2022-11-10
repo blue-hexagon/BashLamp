@@ -1,6 +1,5 @@
 #!/bin/bash    
 source func_colors.sh
-source func_require_root.sh
 
 
 print_yellow "To get help, consult: https://www.linode.com/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/"

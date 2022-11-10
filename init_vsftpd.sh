@@ -1,15 +1,15 @@
 #!/bin/bash    
 source func_colors.sh
-source func_require_root.sh
 
 
 print_yellow "For resources: https://techviewleo.com/install-and-configure-vsftpd-ftp-server-on-rocky-linux/#comments"
 
-dnf update -y > /dev/null 2>&1
-print_green "[dnf] system is updated"
-
 dnf install -y vsftpd openssl
 systemctl enable --now vsftpd
+
+firewall-cmd --zone=public --permanent --add-port=21/tcp
+firewall-cmd --zone=public --permanent --add-service=ftp
+firewall-cmd --reload
 
 adduser vsftpduser
 passwd vsftpduser

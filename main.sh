@@ -1,4 +1,9 @@
 #!/bin/bash
+
+source func_require_root.sh
+echo -e "\e[92m[dnf] Updating system\e[39m"
+dnf update -y > /dev/null 2>&1
+
 source init_users.sh
 source init_lamp.sh
 source init_fail2ban.sh

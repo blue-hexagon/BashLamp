@@ -1,6 +1,5 @@
 #!/bin/bash    
 source func_colors.sh
-source func_require_root.sh
 
 db_name="wordpress"
 db_password="password"

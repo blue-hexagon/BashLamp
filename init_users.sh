@@ -1,6 +1,5 @@
 #!/bin/bash
 source func_colors.sh
-source func_require_root.sh
    
 for username in tobi801j tobi802j stef965j mort46n1
 do
