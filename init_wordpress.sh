@@ -35,6 +35,7 @@ sudo chown -R apache:apache /var/www/html/*
 
 print_green "[system] Finishing up WordPress configuration"
 echo -e "Configuring wordpress"
+cd -
 cd /var/www/html
 cp wp-config-sample.php wp-config.php
 
@@ -42,3 +43,6 @@ print_green "[system] Setting db_name: ${db_name}, username: ${db_user} and pass
 sed -i "s/database_name_here/${db_name}/g" wp-config.php
 sed -i "s/username_here/${db_user}/g" wp-config.php
 sed -i "s/password_here/${db_password}/g" wp-config.php
+cd -
+
+
