@@ -1,5 +1,5 @@
 # Bash LAMP
-![A LAMP Stack](./img1.jpg)
+<img src="./img1.jpg" width="128" />
 Sets up a LAMP server with users, FTP access and a WordPress instance.
 
 ## Usage
