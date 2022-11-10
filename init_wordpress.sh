@@ -7,9 +7,6 @@ db_user="wpuser"
 
 print_yellow "To get help, consult: https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-on-centos-7"
 
-dnf update -y > /dev/null 2>&1
-print_green "[dnf] system is updated"
-
 print_green "[mysql] Creating WordPress database with databasename: ${db_name}"
 mysql -u root -pKode1234! -e "CREATE DATABASE ${db_name};"
 print_green "[mysql] Creating user in database: ${db_user} with password: ${db_password}"

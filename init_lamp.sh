@@ -1,11 +1,6 @@
 #!/bin/bash    
 source func_colors.sh
 
-dnf update -y
-print_green "[dnf] System updated"
-dnf install -y vim tmux wget
-print_green "[dnf] wget, vim and tmux installed"
-
 dnf install -y httpd
 systemctl enable --now httpd
 print_green "[dnf] Apache installed, enabled and started"

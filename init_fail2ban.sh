@@ -3,8 +3,7 @@ source func_colors.sh
 
 
 print_yellow "To get help, consult: https://www.linode.com/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/"
-dnf update -y > /dev/null 2>&1
-print_green "[dnf] system is updated"
+
 dnf install -y epel-release > /dev/null 2>&1
 print_green "[dnf] installed epel-release"
 
