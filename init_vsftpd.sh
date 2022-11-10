@@ -13,7 +13,6 @@ firewall-cmd --zone=public --permanent --add-service=ftp
 firewall-cmd --reload
 
 adduser vsftpduser
-passwd vsftpduser
 passwd --stdin vsftpduser <<< "Kodeord1234!!!"
 
 
@@ -32,10 +31,10 @@ echo "pasv_max_port=31000" >> /etc/vsftpd/vsftpd.conf
 echo "userlist_file=/etc/vsftpd/user_list" >> /etc/vsftpd/vsftpd.conf
 echo "userlist_deny=NO" >> /etc/vsftpd/vsftpd.conf
 
-sudo openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/vsftpd.pem -out /etc/vsftpd/vsftpd.pem
+#sudo openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/vsftpd.pem -out /etc/vsftpd/vsftpd.pem
 
-echo "rsa_cert_file=/etc/vsftpd/vsftpd.pem" >> /etc/vsftpd/vsftpd.conf
-echo "rsa_private_key_file=/etc/vsftpd.pem" >> /etc/vsftpd/vsftpd.conf
-echo "ssl_enable=YES" >> /etc/vsftpd/vsftpd.conf
+#echo "rsa_cert_file=/etc/vsftpd/vsftpd.pem" >> /etc/vsftpd/vsftpd.conf
+#echo "rsa_private_key_file=/etc/vsftpd.pem" >> /etc/vsftpd/vsftpd.conf
+#echo "ssl_enable=YES" >> /etc/vsftpd/vsftpd.conf
 
 systemctl restart vsftpd
