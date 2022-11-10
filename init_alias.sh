@@ -1,7 +1,7 @@
 #!/bin/bash
-grep 'eip="curl' ~/.bashrc
+grep 'eip="curl' ~/.bashrc 1>/dev/null
 if [[ $? -eq 1 ]]; then
-cat <<ALIASLIST >~/.bashrc
+cat <<ALIASLIST >>~/.bashrc
 alias cls="clear"
 alias ls='ls -liah --color=auto'
 alias grep='grep --color=auto'
