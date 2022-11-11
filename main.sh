@@ -2,6 +2,12 @@
 
 setenforce 1
 
+rcfile="~/.ditzelrc"
+
+if [[ -z ${rcfile} ]]; then
+	touch ${rcfile}
+fi
+
 read -p "Run strict install mode with: set -e ? (y/n): " strictmode
 
 if [[ ${strictmode,,} == "y" || ${strictmode,,} == "yes" || ${strictmode} == "" ]]
