@@ -42,3 +42,9 @@ sed -i "s/username_here/${db_user}/g" wp-config.php
 sed -i "s/password_here/${db_password}/g" wp-config.php
 
 cd -
+
+cd /var/www/html/wp-content/plugins/
+wget https://downloads.wordpress.org/plugin/woocommerce.7.1.0.zip
+unzip woocommerce.7.1.0.zip
+
+cd -
