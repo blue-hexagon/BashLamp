@@ -12,18 +12,18 @@ firewall-cmd --zone=public --permanent --add-service=ftp
 
 firewall-cmd --reload
 
-adduser vsftpduser
-passwd --stdin vsftpduser <<< "Kode1234!!!"
+#adduser vsftpduser
+#passwd --stdin vsftpduser <<< "Kode1234!"
 
 
-mkdir -p /home/vsftpduser/ftp_folder
-chmod -R 750 /home/vsftpduser/ftp_folder
-chown vsftpduser: /home/vsftpduser/ftp_folder
+#mkdir -p /home/vsftpduser/ftp_folder
+#chmod -R 750 /home/vsftpduser/ftp_folder
+#chown vsftpduser: /home/vsftpduser/ftp_folder
 
 
-echo 'vsftpduser' >> /etc/vsftpd/user_list
+#echo 'vsftpduser' >> /etc/vsftpd/user_list
 echo 'tobi801j' >> /etc/vsftpd/user_list
-echo 'root' >> /etc/vsftpd/user_list
+#echo 'root' >> /etc/vsftpd/user_list
 
 sed -i 's/#chroot_local_user=YES/chroot_local_user=YES/g' /etc/vsftpd/vsftpd.conf
 

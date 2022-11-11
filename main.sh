@@ -1,6 +1,6 @@
 #!/bin/bash
 
-setenforce 0
+setenforce 1
 
 read -p "Run strict install mode with: set -e ? (y/n): " strictmode
 
