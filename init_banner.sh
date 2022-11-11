@@ -7,6 +7,7 @@ if [[ $? -eq 1 ]]; then
 	unzip master.zip
 	cd lolcat-master/bin
 	gem install lolcat
+	cd -
 	rm -rf lolcat-master
 	rm -rf master.zip
 	echo 'figlet -w 120 -f "/usr/share/figlet/fonts/3d.flf" "Ditzels LAMP" | lolcat' >> ~/.bashrc
