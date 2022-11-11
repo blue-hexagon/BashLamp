@@ -11,7 +11,10 @@ if [[ $? -eq 1 ]]; then
 	firewall-cmd --zone=public --permanent --add-service=ftp
 	firewall-cmd --reload
 
-	echo 'tobi801j' >> /etc/vsftpd/user_list
+	for user in "${ftp_users[@]}"; do
+      	echo ${user} >> /etc/vsftpd/user_list  
+    	done
+	
 
 	sed -i 's/#chroot_local_user=YES/chroot_local_user=YES/g' /etc/vsftpd/vsftpd.conf
 	echo "allow_writeable_chroot=YES" >> /etc/vsftpd/vsftpd.conf

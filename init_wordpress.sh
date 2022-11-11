@@ -1,17 +1,12 @@
 #!/bin/bash    
 grep "WORDPRESS_INSTALLED" ${rcfile} 1>/dev/null
 if [[ $? -eq 1 ]]; then
-	db_name="wordpress"
-	db_password="password"
-	db_user="wpuser"
-
 	print_yellow "To get help, consult: https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-on-centos-7"
-
-	print_green "[mysql] Creating WordPress database with databasename: ${db_name}"
-	mysql -u root -pKode1234! -e "CREATE DATABASE ${db_name};"
-	print_green "[mysql] Creating user in database: ${db_user} with password: ${db_password}"
-	mysql -u root -pKode1234! -D wordpress -e "CREATE USER ${db_user}@localhost IDENTIFIED BY '${db_password}';"
-	mysql -u root -pKode1234! -D wordpress -e "GRANT ALL PRIVILEGES ON wordpress.* TO ${db_user}@localhost IDENTIFIED BY '${db_password}';"
+	print_green "[mysql] Creating WordPress database with databasename: ${wordpress_db_name}"
+	mysql -u root -pKode1234! -e "CREATE DATABASE ${wordpress_db_name};"
+	print_green "[mysql] Creating user in database: ${wordpress_db_user} with password: ${wordpress_db_password}"
+	mysql -u root -pKode1234! -D wordpress -e "CREATE USER ${wordpress_db_user}@localhost IDENTIFIED BY '${wordpress_db_password}';"
+	mysql -u root -pKode1234! -D wordpress -e "GRANT ALL PRIVILEGES ON wordpress.* TO ${wordpress_db_user}@localhost IDENTIFIED BY '${wordpress_db_password}';"
 	mysql -u root -pKode1234! -D wordpress -e "FLUSH PRIVILEGES;"
 
 	print_green "[dnf] Installing php-gd and php-mysqlnd"
@@ -35,10 +30,10 @@ if [[ $? -eq 1 ]]; then
 	cd -
 	cd /var/www/html
 	cp wp-config-sample.php wp-config.php
-	print_green "[system] Setting db_name: ${db_name}, username: ${db_user} and password: ${db_password} in wp-config.php"
-	sed -i "s/database_name_here/${db_name}/g" wp-config.php
-	sed -i "s/username_here/${db_user}/g" wp-config.php
-	sed -i "s/password_here/${db_password}/g" wp-config.php
+	print_green "[system] Setting wordpress_db_name: ${wordpress_db_name}, username: ${wordpress_db_user} and password: ${wordpress_db_password} in wp-config.php"
+	sed -i "s/database_name_here/${wordpress_db_name}/g" wp-config.php
+	sed -i "s/username_here/${wordpress_db_user}/g" wp-config.php
+	sed -i "s/password_here/${wordpress_db_password}/g" wp-config.php
 	cd -
 
 	cd /var/www/html/wp-content/plugins/

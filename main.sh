@@ -1,18 +1,16 @@
 #!/bin/bash
 
+source config.sh
 setenforce 1
-
 rcfile=~/.ditzelrc
-
 if [[ ! -e ${rcfile} ]]; then
 	touch ${rcfile}
 fi
 
 read -p "Run strict install mode with: set -e ? (y/n): " strictmode
-
 if [[ ${strictmode,,} == "y" || ${strictmode,,} == "yes" || ${strictmode} == "" ]]
 then
-        set -e
+	set -e
 fi
 
 source func_require_root.sh
