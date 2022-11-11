@@ -1,5 +1,5 @@
 #!/bin/bash
-grep "BANNER_CONFIGURED" ${rcfile} 1>/dev/null
+grep ${rcfile} "BANNER_CONFIGURED" 1>/dev/null
 if [[ $? -eq 1 ]]; then
 	dnf install -y ruby figlet
 	wget https://github.com/busyloop/lolcat/archive/master.zip || error_msg_and_exit "Failed retrieving lolcat"

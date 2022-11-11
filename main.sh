@@ -2,7 +2,7 @@
 
 setenforce 1
 
-rcfile="~/.ditzelrc"
+rcfile=~/.ditzelrc
 
 if [[ ! -e ${rcfile} ]]; then
 	touch ${rcfile}

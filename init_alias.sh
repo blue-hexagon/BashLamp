@@ -1,5 +1,5 @@
 #!/bin/bash
-grep 'ALIASES_CONFIGURED' ${rcfile} 1>/dev/null
+grep ${rcfile} 'ALIASES_CONFIGURED' 1>/dev/null
 if [[ $? -eq 1 ]]; then
 	print_green "[ditzel] adding aliases to .bashrc"
 	cat <<-ALIASLIST >>~/.bashrc

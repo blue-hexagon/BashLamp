@@ -1,5 +1,5 @@
 #!/bin/bash
-$password="Kode1234!"   
+password="Kode1234!"   
 
 for username in tobi801j tobi802j stef965j mort46n1
 do
