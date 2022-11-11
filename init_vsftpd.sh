@@ -7,14 +7,13 @@ dnf install -y vsftpd openssl
 systemctl enable --now vsftpd
 
 firewall-cmd --zone=public --permanent --add-port=21/tcp
-firewall-cmd --zone=public --permanent --add-port=22/tcp
 firewall-cmd --zone=public --permanent --add-port=30000-31000/tcp
 firewall-cmd --zone=public --permanent --add-service=ftp
 
 firewall-cmd --reload
 
 adduser vsftpduser
-passwd --stdin vsftpduser <<< "Kodeord1234!!!"
+passwd --stdin vsftpduser <<< "Kode1234!!!"
 
 
 mkdir -p /home/vsftpduser/ftp_folder
@@ -24,6 +23,7 @@ chown vsftpduser: /home/vsftpduser/ftp_folder
 
 echo 'vsftpduser' >> /etc/vsftpd/user_list
 echo 'tobi801j' >> /etc/vsftpd/user_list
+echo 'root' >> /etc/vsftpd/user_list
 
 sed -i 's/#chroot_local_user=YES/chroot_local_user=YES/g' /etc/vsftpd/vsftpd.conf
 
