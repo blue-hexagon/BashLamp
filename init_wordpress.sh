@@ -1,5 +1,4 @@
 #!/bin/bash    
-source func_colors.sh
 grep "WORDPRESS_INSTALLED" ${rcfile} 1>/dev/null
 if [[ $? -eq 1 ]]; then
 	db_name="wordpress"

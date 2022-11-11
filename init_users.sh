@@ -1,6 +1,4 @@
 #!/bin/bash
-source func_colors.sh
-
 $password="Kode1234!"   
 
 for username in tobi801j tobi802j stef965j mort46n1

@@ -4,7 +4,7 @@ setenforce 1
 
 rcfile="~/.ditzelrc"
 
-if [[ -z ${rcfile} ]]; then
+if [[ ! -e ${rcfile} ]]; then
 	touch ${rcfile}
 fi
 
@@ -16,6 +16,8 @@ then
 fi
 
 source func_require_root.sh
+source func_colors.sh
+source func_utilities.sh
 
 echo -e "\e[92m[dnf] Updating system\e[39m"
 dnf update -y

@@ -1,6 +1,4 @@
 #!/bin/bash    
-source func_colors.sh
-
 grep "LAMP_INSTALLED" ${rcfile} 1>/dev/null
 if [[ $? -eq 1 ]]; then
 	dnf install -y httpd
