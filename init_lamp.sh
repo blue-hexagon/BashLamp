@@ -1,5 +1,5 @@
 #!/bin/bash    
-grep ${rcfile} "LAMP_INSTALLED" 1>/dev/null
+grep "LAMP_INSTALLED" ${rcfile} 1>/dev/null
 if [[ $? -eq 1 ]]; then
 	dnf install -y httpd
 	systemctl enable --now httpd

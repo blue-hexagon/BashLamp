@@ -1,5 +1,5 @@
 #!/bin/bash    
-grep ${rcfile} "FAIL2BAN_INSTALLED" 1>/dev/null
+grep "FAIL2BAN_INSTALLED" ${rcfile} 1>/dev/null
 if [[ $? -eq 1 ]]; then
 	print_yellow "To get help, consult: https://www.linode.com/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/"
 

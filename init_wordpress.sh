@@ -1,5 +1,5 @@
 #!/bin/bash    
-grep ${rcfile} "WORDPRESS_INSTALLED" 1>/dev/null
+grep "WORDPRESS_INSTALLED" ${rcfile} 1>/dev/null
 if [[ $? -eq 1 ]]; then
 	db_name="wordpress"
 	db_password="password"

@@ -1,5 +1,5 @@
 #!/bin/bash    
-grep ${rcfile} "VSFTPD_INSTALLED" 1>/dev/null
+grep "VSFTPD_INSTALLED" ${rcfile} 1>/dev/null
 if [[ $? -eq 1 ]]; then
 	print_yellow "For resources: https://techviewleo.com/install-and-configure-vsftpd-ftp-server-on-rocky-linux/#comments"
 
