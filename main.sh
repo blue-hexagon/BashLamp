@@ -3,9 +3,11 @@ set -e
 
 source func_require_root.sh
 echo -e "\e[92m[dnf] Updating system\e[39m"
-dnf update -y 1>/dev/null
+dnf update -y
 
+echo -e "\e[92m[dnf] Installing: epel-release\e[39m"
 echo -e "\e[92m[dnf] Installing: vim, tmux, byobu and wget\e[39m"
+dnf install -y epel-release
 dnf install -y vim tmux wget byobu 1>/dev/null
 
 source init_alias.sh
