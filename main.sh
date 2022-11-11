@@ -23,7 +23,7 @@ dnf update -y
 echo -e "\e[92m[dnf] Installing: epel-release\e[39m"
 echo -e "\e[92m[dnf] Installing: vim, tmux, byobu and wget\e[39m"
 dnf install -y epel-release
-dnf install -y vim tmux wget byobu
+dnf install -y vim tmux wget byobu dialog
 
 source init_alias.sh
 source init_banner.sh
