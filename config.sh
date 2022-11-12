@@ -1,4 +1,30 @@
 #!/bin/bash
+selection=$(dialog --title "Menu" --clear --cancel-label "Exit" \
+    --menu "Please select:" 20 70 4 \
+    "1" "Run installer" \
+    "2" "Configure Fail2Ban" \
+    "3" "Configure VSFTPD" \
+ 3>&1 1>&2 2>&3)
+
+
+if [[ $selection -eq 2 ]]; then
+	grep "FAIL2BAN_INSTALLED" $rcfile 
+	if [[ $? -eq 0 ]]; then
+      	vim /etc/fail2ban/jail.local
+	else
+		print_red "You haven't run the setup for vsftpd yet, exiting"
+	exit 0
+elif [[ $selection -eq 3 ]]; then
+	grep "VSFTPD_INSTALLED" $rcfile
+	if [[ $? -eq 0 ]]; then
+		vim /etc//vsftpd/vsftpd.conf
+		systemctl restart vsftpd || systemctl reload vsftpd
+	else
+		print_red "You haven't run the setup for vsftpd yet, exiting"
+	exit 0
+fi
+
+
 dialog --title "DitzelsLAMP" --msgbox 'This script will setup Fail2Ban and install a LAMP server with Wordpress and FTP access. For more information visit: https://github.com/blue-hexagon/BashLamp' 20 70
 form_new_users="$(dialog --inputbox "Enter a list of users to create (space delimited)" 		   20 70 "" 3>&1 1>&2 2>&3)"
 form_ftp_users="$(dialog --inputbox "Add users allowed to ftp into the server (space delimited)"   20 70 "" 3>&1 1>&2 2>&3)"
