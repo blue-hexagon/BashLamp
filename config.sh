@@ -52,6 +52,7 @@ form_wordpress_db="$(dialog --form "Enter wp database details (no spaces!)" 20 7
 if [[ $? -eq 1 ]]; then
 	print_yellow "You cancelled the script"
 	exit 1
+fi
 clear
 
 new_users=($form_new_users)
