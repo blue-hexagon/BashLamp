@@ -30,14 +30,8 @@ if [[ $? -eq 1 ]]; then
 	systemctl restart httpd
 	print_green "[systemctl] Apache restarted"
 	print_green "[script] LAMP installed successfully"
-	echo "LAMP_INSTALLED" >> ${rcfile}
-fi
-
-read -p "Run mysql_secure_installation? (y/n): " choice
-
-if [[ ${choice,,} == "y" || ${choice,,} == "yes" || ${choice} == "" ]]; then
-        #mysql_secure_installation
-	mysql -sfu root -pKode1234! <<-EOS
+	print_green "[script] Securing database"
+	mysql -sfu root <<-EOS
 	-- set root password
 	UPDATE mysql.user SET Password=PASSWORD('Kode1234!') WHERE User='root';
 	-- delete anonymous users
@@ -51,4 +45,5 @@ if [[ ${choice,,} == "y" || ${choice,,} == "yes" || ${choice} == "" ]]; then
 	-- make changes immediately
 	FLUSH PRIVILEGES;
 	EOS
+	echo "LAMP_INSTALLED" >> ${rcfile}
 fi
