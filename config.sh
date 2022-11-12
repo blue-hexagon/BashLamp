@@ -35,6 +35,9 @@ elif [[ $selection -eq 3 ]]; then
 		print_red "You haven't run the installer yet, exiting"
 		exit 1
 	fi
+else
+	# The Exit button was pressed
+	exit 0
 fi
 
 
