@@ -36,8 +36,6 @@ elif [[ $selection -eq 3 ]]; then
 		exit 1
 	fi
 else
-	# The Exit button was pressed
-	exit 0
 fi
 
 
@@ -46,11 +44,14 @@ form_new_users="$(dialog --inputbox "Enter a list of users to create (space deli
 form_ftp_users="$(dialog --inputbox "Add users allowed to ftp into the server (space delimited)"   20 70 "" 3>&1 1>&2 2>&3)"
 form_users_password="$(dialog --inputbox "Add a default password for the new users"  		   20 70 "" 3>&1 1>&2 2>&3)"
 
-form_wordpress_db="$(dialog --form "Enter wp database details (no spaces!)"   20 70  14    \
+form_wordpress_db="$(dialog --form "Enter wp database details (no spaces!)" 20 70  14    \
              "Wordpress Database Name: "         1 1 "wordpress" 1  35  35  0 \
              "Wordpress Database Password: "     2 1 "password"  2  35  35  0 \
              "Wordpress Database User: "         3 1 "wpuser"    3  35  35  0 \
              3>&1 1>&2 2>&3)"
+if [[ $? -eq 1 ]]; then
+	print_yellow "You cancelled the script"
+	exit 1
 clear
 
 new_users=($form_new_users)
