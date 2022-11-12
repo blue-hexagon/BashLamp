@@ -11,6 +11,7 @@ if [[ $selection -eq 1 ]]; then
 	rcfile_entries=($rcfile_entries)
 	if [[ ${rcfile_entries[0]} -eq 8 ]]; then
 		print_red "You have already installed the LAMP server with all of it's modules, exiting"
+		exit
 	fi
 elif [[ $selection -eq 2 ]]; then
 	grep "FAIL2BAN_INSTALLED" $rcfile 
