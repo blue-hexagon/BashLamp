@@ -15,22 +15,24 @@ if [[ $selection -eq 1 ]]; then
 		exit 1
 	fi
 elif [[ $selection -eq 2 ]]; then
-	grep "FAIL2BAN_INSTALLED" $rcfile 
+	grep "FAIL2BAN_INSTALLED" $rcfile 1>/dev/null
 	if [[ $? -eq 0 ]]; then
       	vim /etc/fail2ban/jail.local
+		print_green "Fail2Ban configuration updated"
 		exit 0
 	else
-		print_red "You haven't run the setup for vsftpd yet, exiting"
+		print_red "You haven't run the installer yet, exiting"
 		exit 1
 	fi
 elif [[ $selection -eq 3 ]]; then
-	grep "VSFTPD_INSTALLED" $rcfile
+	grep "VSFTPD_INSTALLED" $rcfile 1>/dev/null
 	if [[ $? -eq 0 ]]; then
 		vim /etc//vsftpd/vsftpd.conf
 		systemctl restart vsftpd || systemctl reload vsftpd
+		print_green "VSFTPD configuration updated and service reloaded"
 		exit 0
 	else
-		print_red "You haven't run the setup for vsftpd yet, exiting"
+		print_red "You haven't run the installer yet, exiting"
 		exit 1
 	fi
 fi
