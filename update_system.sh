@@ -16,5 +16,6 @@ if [[ $? -eq 1 ]]; then
 	dnf install -y epel-release
 	print_green "[dnf] Installing: vim, tmux, expect, byobu and wget"
 	dnf install -y vim wget dialog expect tmux byobu 
+	byobu-enable
 	echo "BASE_SOFTWARE_INSTALLED" >> ${rcfile}
 fi
