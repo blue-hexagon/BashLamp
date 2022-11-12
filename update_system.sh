@@ -1,4 +1,8 @@
 #!/bin/bash
+rcfile=~/.ditzelrc
+if [[ ! -e ${rcfile} ]]; then
+	touch ${rcfile}
+fi
 grep 'SYSTEM_UPDATED' ${rcfile} 1>/dev/null
 if [[ $? -eq 1 ]]; then
 	print_green "[dnf] Updating system"

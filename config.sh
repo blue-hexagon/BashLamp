@@ -20,11 +20,6 @@ wordpress_db_name=${wordpress_db[0]}
 wordpress_db_password=${wordpress_db[1]}
 wordpress_db_user=${wordpress_db[2]}
 
-rcfile=~/.ditzelrc
-if [[ ! -e ${rcfile} ]]; then
-	touch ${rcfile}
-fi
-
 if [[ ! getenforce == "Enforcing" ]]; then
 	setenforce 1
 fi
