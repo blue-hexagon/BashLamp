@@ -1,6 +1,4 @@
 #!/bin/bash
- 
-
 for username in "${new_users[@]}"
 do
     if ! id -u ${username} > /dev/null 2>&1; then
