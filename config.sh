@@ -5,31 +5,34 @@ selection=$(dialog --title "Menu" --clear --cancel-label "Exit" \
     "2" "Configure Fail2Ban" \
     "3" "Configure VSFTPD" \
  3>&1 1>&2 2>&3)
+clear
 
 if [[ $selection -eq 1 ]]; then
 	rcfile_entries=$( wc -l "${HOME}/.ditzelrc" )
 	rcfile_entries=($rcfile_entries)
 	if [[ ${rcfile_entries[0]} -eq 8 ]]; then
 		print_red "You have already installed the LAMP server with all of it's modules, exiting"
-		exit
+		exit 1
 	fi
 elif [[ $selection -eq 2 ]]; then
 	grep "FAIL2BAN_INSTALLED" $rcfile 
 	if [[ $? -eq 0 ]]; then
       	vim /etc/fail2ban/jail.local
+		exit 0
 	else
 		print_red "You haven't run the setup for vsftpd yet, exiting"
+		exit 1
 	fi
-	exit 0
 elif [[ $selection -eq 3 ]]; then
 	grep "VSFTPD_INSTALLED" $rcfile
 	if [[ $? -eq 0 ]]; then
 		vim /etc//vsftpd/vsftpd.conf
 		systemctl restart vsftpd || systemctl reload vsftpd
+		exit 0
 	else
 		print_red "You haven't run the setup for vsftpd yet, exiting"
+		exit 1
 	fi
-	exit 0
 fi
 
 
