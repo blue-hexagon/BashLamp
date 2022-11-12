@@ -4,7 +4,7 @@ selection=$(dialog --title "Menu" --clear --cancel-label "Exit" \
     "1" "Run installer" \
     "2" "Configure Fail2Ban" \
     "3" "Configure VSFTPD" \
- 3>&1 1>&2 2>&3)
+ 3>&1 1>&2 2>&3) || { clear ; exit ; }
 clear
 
 if [[ $selection -eq 1 ]]; then
@@ -35,20 +35,20 @@ elif [[ $selection -eq 3 ]]; then
 		print_red "You haven't run the installer yet, exiting"
 		exit 1
 	fi
-else
 fi
 
 
 dialog --title "DitzelsLAMP" --msgbox 'This script will setup Fail2Ban and install a LAMP server with Wordpress and FTP access. For more information visit: https://github.com/blue-hexagon/BashLamp' 20 70
-form_new_users="$(dialog --inputbox "Enter a list of users to create (space delimited)" 		   20 70 "" 3>&1 1>&2 2>&3)"
-form_ftp_users="$(dialog --inputbox "Add users allowed to ftp into the server (space delimited)"   20 70 "" 3>&1 1>&2 2>&3)"
-form_users_password="$(dialog --inputbox "Add a default password for the new users"  		   20 70 "" 3>&1 1>&2 2>&3)"
+form_new_users="$(dialog --inputbox "Enter a list of users to create (space delimited)" 		   20 70 "" 3>&1 1>&2 2>&3)" || { clear ; exit ; }
+
+form_ftp_users="$(dialog --inputbox "Add users allowed to ftp into the server (space delimited)"   20 70 "" 3>&1 1>&2 2>&3)" || { clear ; exit ; }
+form_users_password="$(dialog --inputbox "Add a default password for the new users"  		   20 70 "" 3>&1 1>&2 2>&3)" || { clear ; exit ; }
 
 form_wordpress_db="$(dialog --form "Enter wp database details (no spaces!)" 20 70  14    \
              "Wordpress Database Name: "         1 1 "wordpress" 1  35  35  0 \
              "Wordpress Database Password: "     2 1 "password"  2  35  35  0 \
              "Wordpress Database User: "         3 1 "wpuser"    3  35  35  0 \
-             3>&1 1>&2 2>&3)"
+             3>&1 1>&2 2>&3)" || { clear ; exit ; }
 if [[ $? -eq 1 ]]; then
 	print_yellow "You cancelled the script"
 	exit 1
