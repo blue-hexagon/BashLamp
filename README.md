@@ -12,7 +12,7 @@ Concretely, this script does the following:
 - Creates new users
 - Sets up a LAMP server
 - Sets up a VSFTP server with SSL certificates
-  - See also: ![RHEL 5 Manual: vsftpd Configuration Options](https://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/s1-ftp-vsftpd-conf.html)
+  - See also: [RHEL 5 Manual: vsftpd Configuration Options](https://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/s1-ftp-vsftpd-conf.html)
 - Sets up Wordpress w/ WooCommerce plugin ready to be installed
 - Sets up Fail2Ban
 
