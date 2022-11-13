@@ -16,7 +16,9 @@ if [[ $? -eq 1 ]]; then
     	done
 	
 
-	sed -i 's/#chroot_local_user=YES/chroot_local_user=YES/g' /etc/vsftpd/vsftpd.conf
+	#sed -i 's/#chroot_local_user=YES/chroot_local_user=YES/g' /etc/vsftpd/vsftpd.conf
+	echo "local_root=/var/www/html/wp-content/plugins" >> /etc/vsftpd/vsftpd.conf
+	echo "dirlist_enable=NO" >> /etc/vsftpd/vsftpd.conf
 	echo "allow_writeable_chroot=YES" >> /etc/vsftpd/vsftpd.conf
 	echo "pasv_min_port=30000" >> /etc/vsftpd/vsftpd.conf
 	echo "pasv_max_port=31000" >> /etc/vsftpd/vsftpd.conf
