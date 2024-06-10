@@ -6,7 +6,7 @@ source update_system.sh
 source config.sh
 
 source init_alias.sh
-source init_banner.sh
+#source init_banner.sh
 source init_users.sh
 source init_lamp.sh
 source init_fail2ban.sh
